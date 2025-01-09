@@ -1,0 +1,3 @@
+This repository demonstrates a common error in Dockerfiles: forgetting to run `apt-get clean` after installing packages.  The initial `Dockerfile` will fail to build due to this omission, while `Dockerfile_fixed` shows the corrected version.
+
+The problem stems from accumulating unnecessary packages and cache during the build process, leading to larger images and potential build failures due to insufficient disk space. The solution is to always include `RUN apt-get clean` after `apt-get install` to remove downloaded packages and their associated cache files.
